@@ -21,7 +21,7 @@ BATCH_SIZE  = 32
 EPOCHS      = 50
 LR          = 1e-3
 PATIENCE    = 10
-SAVE_PATH   = "test_model.pth"
+SAVE_PATH   = "test_model_grey.pth"
 DEVICE      = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # -------------------- Dataset Paths -------------------
