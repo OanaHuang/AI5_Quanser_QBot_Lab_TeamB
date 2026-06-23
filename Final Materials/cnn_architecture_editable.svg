@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1350" viewBox="0 0 1400 1350">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #444; }
+      .sub { font: 700 16px Arial, sans-serif; fill: #4a4a4a; }
+      .small { font: 14px Arial, sans-serif; fill: #4a4a4a; }
+      .tiny { font: 12px Arial, sans-serif; fill: #5a5a5a; }
+      .boxtext { font: 700 17px Arial, sans-serif; fill: #4a4a4a; }
+      .boxsub { font: 14px Arial, sans-serif; fill: #5a5a5a; }
+      .mint { fill: #dff2ea; stroke: #8fb5a5; }
+      .lav { fill: #eeecfb; stroke: #b8b0e5; }
+      .blue { fill: #e7f0fa; stroke: #a8bfdc; }
+      .cream { fill: #f7f3e4; stroke: #d1c6a0; }
+      .orange { fill: #f8ecd9; stroke: #d8b57d; }
+      .divider { stroke: #d9d9d9; stroke-dasharray: 4 6; }
+      .arrow { stroke: #8d8d8d; stroke-width: 2.2; fill: none; marker-end: url(#m); }
+      .curve { stroke: #b5a8e7; stroke-width: 2.2; fill: none; }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#8d8d8d"/>
+    </marker>
+  </defs>
+
+  <text x="230" y="52" class="title">baseline_cnn</text>
+  <text x="930" y="52" class="title">test_model</text>
+
+  <line x1="700" y1="40" x2="700" y2="1290" class="divider"/>
+
+  <rect x="80" y="90" rx="10" ry="10" width="420" height="64" class="mint" stroke-width="2"/>
+  <text x="290" y="130" text-anchor="middle" class="sub">Input 128×128×3 (CPU)</text>
+  <path d="M290 154 L290 184" class="arrow"/>
+
+  <rect x="95" y="185" rx="12" ry="12" width="390" height="120" class="lav" stroke-width="2"/>
+  <text x="290" y="223" text-anchor="middle" class="boxtext">Block 0</text>
+  <text x="290" y="258" text-anchor="middle" class="boxsub">Conv 3→32 · BN · ReLU · Pool</text>
+  <path d="M290 305 L290 335" class="arrow"/>
+
+  <rect x="95" y="336" rx="12" ry="12" width="390" height="120" class="lav" stroke-width="2"/>
+  <text x="290" y="374" text-anchor="middle" class="boxtext">Block 1</text>
+  <text x="290" y="409" text-anchor="middle" class="boxsub">Conv 32→64 · BN · ReLU · Pool</text>
+  <path d="M290 456 L290 486" class="arrow"/>
+
+  <rect x="95" y="487" rx="12" ry="12" width="390" height="120" class="lav" stroke-width="2"/>
+  <text x="290" y="525" text-anchor="middle" class="boxtext">Block 2</text>
+  <text x="290" y="560" text-anchor="middle" class="boxsub">Conv 64→128 · BN · ReLU · Pool</text>
+  <path d="M290 607 L290 637" class="arrow"/>
+
+  <rect x="95" y="638" rx="12" ry="12" width="390" height="120" class="lav" stroke-width="2"/>
+  <text x="290" y="676" text-anchor="middle" class="boxtext">Block 3</text>
+  <text x="290" y="711" text-anchor="middle" class="boxsub">Conv 128→256 · BN · ReLU · Pool</text>
+  <path d="M290 758 L290 788" class="arrow"/>
+
+  <rect x="120" y="789" rx="8" ry="8" width="340" height="62" class="cream" stroke-width="2"/>
+  <text x="290" y="827" text-anchor="middle" class="sub">Global average pooling → 256-dim</text>
+  <path d="M290 851 L290 881" class="arrow"/>
+
+  <rect x="80" y="882" rx="10" ry="10" width="420" height="95" class="blue" stroke-width="2"/>
+  <text x="290" y="920" text-anchor="middle" class="boxtext">Classifier</text>
+  <text x="290" y="955" text-anchor="middle" class="boxsub">Linear 256→128 · ReLU · Dropout</text>
+  <path d="M290 977 L290 1007" class="arrow"/>
+
+  <rect x="80" y="1008" rx="8" ry="8" width="420" height="60" class="blue" stroke-width="2"/>
+  <text x="290" y="1045" text-anchor="middle" class="sub">Linear 128→5</text>
+
+  <rect x="80" y="1085" rx="8" ry="8" width="420" height="60" class="orange" stroke-width="2"/>
+  <text x="290" y="1123" text-anchor="middle" class="sub">5 classes (crossroad / curve / …)</text>
+  <text x="290" y="1172" text-anchor="middle" class="small">≈ 420 K params</text>
+
+  <rect x="830" y="90" rx="10" ry="10" width="470" height="64" class="mint" stroke-width="2"/>
+  <text x="1065" y="130" text-anchor="middle" class="sub">Input 128×128×3 (GPU / cuda:0)</text>
+  <path d="M1065 154 L1065 184" class="arrow"/>
+
+  <rect x="850" y="185" rx="12" ry="12" width="430" height="150" class="lav" stroke-width="2"/>
+  <text x="1065" y="224" text-anchor="middle" class="boxtext">ResBlock 1 (3→32)</text>
+  <text x="1065" y="262" text-anchor="middle" class="boxsub">Conv3×3 · BN · ReLU · Dropout</text>
+  <text x="1065" y="292" text-anchor="middle" class="boxsub">Conv3×3 · BN · Pool</text>
+  <path d="M1065 335 L1065 365" class="arrow"/>
+
+  <rect x="850" y="366" rx="12" ry="12" width="430" height="150" class="lav" stroke-width="2"/>
+  <text x="1065" y="405" text-anchor="middle" class="boxtext">ResBlock 2 (32→64)</text>
+  <text x="1065" y="443" text-anchor="middle" class="boxsub">Conv3×3 · BN · ReLU · Dropout</text>
+  <text x="1065" y="473" text-anchor="middle" class="boxsub">Conv3×3 · BN · Pool</text>
+  <path d="M1065 516 L1065 546" class="arrow"/>
+
+  <rect x="850" y="547" rx="12" ry="12" width="430" height="150" class="lav" stroke-width="2"/>
+  <text x="1065" y="586" text-anchor="middle" class="boxtext">ResBlock 3 (64→128)</text>
+  <text x="1065" y="624" text-anchor="middle" class="boxsub">Conv3×3 · BN · ReLU · Dropout</text>
+  <text x="1065" y="654" text-anchor="middle" class="boxsub">Conv3×3 · BN · Pool</text>
+  <path d="M1065 697 L1065 727" class="arrow"/>
+
+  <rect x="850" y="728" rx="12" ry="12" width="430" height="150" class="lav" stroke-width="2"/>
+  <text x="1065" y="767" text-anchor="middle" class="boxtext">ResBlock 4 (128→256)</text>
+  <text x="1065" y="805" text-anchor="middle" class="boxsub">Conv3×3 · BN · ReLU · Dropout</text>
+  <text x="1065" y="835" text-anchor="middle" class="boxsub">Conv3×3 · BN · Pool</text>
+  <path d="M1065 878 L1065 908" class="arrow"/>
+
+  <rect x="880" y="909" rx="8" ry="8" width="370" height="62" class="cream" stroke-width="2"/>
+  <text x="1065" y="947" text-anchor="middle" class="sub">Global average pooling → 256-dim</text>
+  <path d="M1065 971 L1065 1001" class="arrow"/>
+
+  <rect x="840" y="1002" rx="10" ry="10" width="450" height="95" class="blue" stroke-width="2"/>
+  <text x="1065" y="1039" text-anchor="middle" class="boxtext">Head</text>
+  <text x="1065" y="1073" text-anchor="middle" class="boxsub">Dropout · Linear 256→256 · BN · ReLU · Dropout</text>
+  <path d="M1065 1097 L1065 1127" class="arrow"/>
+
+  <rect x="840" y="1128" rx="8" ry="8" width="450" height="60" class="blue" stroke-width="2"/>
+  <text x="1065" y="1165" text-anchor="middle" class="sub">Linear 256→5</text>
+
+  <rect x="840" y="1205" rx="8" ry="8" width="450" height="60" class="orange" stroke-width="2"/>
+  <text x="1065" y="1243" text-anchor="middle" class="sub">5 classes (crossroad / curve / …)</text>
+  <text x="1065" y="1293" text-anchor="middle" class="small">≈ 1.35 M params</text>
+
+  <path d="M1280 225 C1340 225 1340 305 1280 305" class="curve"/>
+  <path d="M1280 406 C1340 406 1340 486 1280 486" class="curve"/>
+  <path d="M1280 587 C1340 587 1340 667 1280 667" class="curve"/>
+  <path d="M1280 768 C1340 768 1340 848 1280 848" class="curve"/>
+  <text x="1325" y="270" class="tiny">shortcut</text>
+  <text x="1325" y="289" class="tiny">1×1 conv</text>
+</svg>
