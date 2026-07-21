@@ -1,69 +1,40 @@
-# AI5 Quanser QBot Lab — Team B
+# CNN-Adaptive Line Following with Virtual QBot Platform
 
-This repository contains the project work completed by **Team B** for the **Advanced AI 5** course at the **University of Glasgow**.
+This repository contains the work completed by **Team B** for the **ENG5337 Advanced Artificial Intelligence & Machine Learning** course at the **University of Glasgow**.
 
-The project was developed by students from the **Robotics & AI** programme using the **Quanser QBot platform**.
+The project explores **scene-aware adaptive line following** using the **Quanser Virtual QBot Platform in QLabs**. A custom convolutional neural network classifies the current road scene, and the predicted scene is then used to adjust the behaviour of a low-level line-following controller.
 
-The main objective was to develop a CNN-based control system that uses images from the QBot's downward-facing camera to recognise different track situations and select suitable driving parameters, including steering behaviour, PID gains, and forward velocity.
-
-The original DIP-based control files are also retained for reference and comparison.
+The project has also been featured in **Quanser's Community Showcase**.
 
 ---
 
 ## Project Overview
 
-The project was completed in the following stages:
+Traditional line-following systems often use a fixed set of control parameters for all road conditions. However, the most suitable velocity, steering behaviour, and PID gains may vary depending on whether the robot is travelling on a straight section, approaching a curve, or entering a junction.
 
-1. Develop and tune the original line-following controller.
-2. Test suitable PID gains and velocities for different track conditions.
-3. Collect and label images from the QBot's downward-facing camera.
-4. Train a CNN model to classify track situations.
-5. Use the CNN prediction to adjust the QBot's driving behaviour.
-6. Evaluate the trained model and compare different control approaches.
+This project combines:
 
-The track conditions considered during development included:
+- Deep learning
+- Classical PID-style control
+- Robot simulation
+- Scene classification
+- Adaptive control parameter selection
 
-- Straight sections
-- Curved sections
-- Crossroads
-- Different approach directions
-- Different robot positions relative to the track centre
+The CNN acts as a high-level perception layer. It does not replace the low-level controller. Instead, it identifies the current road condition and selects more suitable control parameters for that scene.
 
-The early project planning also considered using different velocity and PID settings for straight lines, corners, and crossroads. :contentReference[oaicite:0]{index=0}
-
----
-
-## Repository Structure
+A simplified workflow is shown below:
 
 ```text
-AI5_Quanser_QBot_Lab_TeamB/
-├── Base_Cnn_Model/
-│   ├── baseline_cnn_checkpoint.pth
-│   ├── evaluation1.jpeg
-│   ├── evaluation2.jpeg
-│   └── line_following_checkpoint_version.py
-│
-├── Dataset_sumup/
-│   ├── dataset_cross/
-│   └── dataset_speedlabel/
-│
-├── Final Materials/
-│   ├── baseline_cnn_checkpoint.pth
-│   ├── CNN/
-│   ├── Quanser/
-│   └── cnn_architecture_editable.svg
-│
-├── Final Report/
-│   ├── AI5_B_presentation.pptx
-│   └── train.py
-│
-├── Notes/
-│
-├── TestScripts/
-│   ├── deploy_cnn_test_v1.0.py
-│   ├── deploy_cnn_test_v1.1.py
-│   ├── evaluate_csv_test_v1.0.py
-│   └── line_following_cnn.py
-│
-├── flow chart.vsdx
-└── README.md
+Downward-Facing Camera
+          ↓
+   Image Preprocessing
+          ↓
+      CNN Classifier
+          ↓
+ Road Scene Prediction
+          ↓
+Control Parameter Selection
+          ↓
+Line-Following Controller
+          ↓
+      QBot Movement
