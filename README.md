@@ -4,7 +4,6 @@ We are **Team B** from the **ENG5337 Advanced Artificial Intelligence & Machine 
 
 In this project, we explored **scene-aware adaptive line following** using the **Quanser Virtual QBot Platform in QLabs**. We developed a custom convolutional neural network to classify the current road scene. We then used the predicted scene to adjust the behaviour of a low-level line-following controller.
 
-Our project has also been featured in **Quanser's Community Showcase**.
 
 ---
 
